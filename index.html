@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCI 採購主管對荷姆茲海峽封鎖一事之分析與因應</title>
+  <style>
+    :root{
+      --bg:#f7f3ee;
+      --panel:#fffaf5;
+      --panel2:#ffffff;
+      --text:#1c1b1a;
+      --muted:#68605a;
+      --red:#e43d30;
+      --red2:#b51f19;
+      --black:#111111;
+      --gold:#b49a64;
+      --line:#e5dcd2;
+      --orange:#f39a3d;
+      --green:#1f8a65;
+      --blue:#2d6cdf;
+      --shadow:0 16px 45px rgba(25,20,15,.12);
+      --radius:22px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(228,61,48,.18), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(180,154,100,.18), transparent 30%),
+        linear-gradient(180deg,#fff7ef 0%,var(--bg) 42%,#f2ece4 100%);
+      line-height:1.72;
+    }
+    a{color:var(--red2);text-decoration:none;border-bottom:1px solid rgba(181,31,25,.25)}
+    a:hover{border-bottom-color:var(--red2)}
+    .wrap{width:min(1180px, calc(100% - 36px)); margin:0 auto;}
+    .hero{
+      position:relative;
+      min-height:88vh;
+      display:grid;
+      align-items:center;
+      padding:56px 0 36px;
+      overflow:hidden;
+    }
+    .spark{
+      position:absolute; right:5%; top:12%; width:210px; height:210px; opacity:.14;
+      transform:rotate(45deg);
+      border:18px solid var(--red);
+      border-radius:34% 66% 37% 63% / 63% 36% 64% 37%;
+    }
+    .hero-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:32px; align-items:center;}
+    .eyebrow{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px;}
+    .tag{
+      display:inline-flex; align-items:center; gap:7px;
+      padding:7px 12px; border-radius:999px; background:rgba(255,255,255,.75); border:1px solid var(--line);
+      color:#4c4742; font-size:14px; font-weight:700;
+      backdrop-filter:blur(10px);
+    }
+    .tag.red{background:rgba(228,61,48,.1); color:var(--red2); border-color:rgba(228,61,48,.25)}
+    h1{font-size:clamp(42px, 7vw, 82px); line-height:1.02; letter-spacing:-.06em; margin:0 0 22px;}
+    h1 .accent{color:var(--red)}
+    .subtitle{font-size:clamp(18px, 2.4vw, 25px); color:#37312d; max-width:820px; margin:0 0 26px; font-weight:700;}
+    .prompt-box{
+      padding:18px 20px; border-left:6px solid var(--red); background:rgba(255,255,255,.78);
+      border-radius:18px; box-shadow:0 10px 28px rgba(25,20,15,.08);
+      color:#342f2b;
+    }
+    .prompt-box b{color:var(--red2)}
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
+    .btn{
+      appearance:none; border:0; cursor:pointer; border-radius:999px; padding:13px 18px;
+      font-weight:900; letter-spacing:.02em; font-size:15px; transition:.2s ease; display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 10px 24px rgba(25,20,15,.10);
+    }
+    .btn.primary{background:var(--black); color:#fff;}
+    .btn.secondary{background:#fff; color:var(--black); border:1px solid var(--line);}
+    .btn.red{background:var(--red); color:white;}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(25,20,15,.16)}
+    .kpi-panel{
+      background:rgba(255,255,255,.78); border:1px solid rgba(255,255,255,.8); border-radius:30px; padding:22px;
+      box-shadow:var(--shadow); backdrop-filter:blur(14px);
+    }
+    .kpi-title{font-size:16px; color:var(--muted); margin:0 0 12px; font-weight:900;}
+    .kpi{border-radius:20px; background:linear-gradient(135deg,#fff,#fff8f0); border:1px solid var(--line); padding:18px; margin-bottom:12px;}
+    .kpi .num{font-size:34px; font-weight:1000; letter-spacing:-.04em; color:var(--red); line-height:1}
+    .kpi .label{font-size:14px; color:var(--muted); margin-top:8px;}
+    .source-note{font-size:12px; color:#756d66; margin-top:12px;}
+    nav.sticky{
+      position:sticky; top:0; z-index:20; background:rgba(255,250,245,.86); backdrop-filter:blur(16px);
+      border-top:1px solid rgba(229,220,210,.7); border-bottom:1px solid rgba(229,220,210,.9);
+    }
+    .nav-inner{display:flex; gap:10px; overflow-x:auto; padding:12px 0;}
+    .nav-inner a{white-space:nowrap; border:1px solid var(--line); background:#fff; color:#342f2b; padding:9px 13px; border-radius:999px; font-size:14px; font-weight:900;}
+    section{padding:76px 0;}
+    .section-head{display:flex; justify-content:space-between; gap:24px; align-items:end; margin-bottom:28px;}
+    .section-kicker{color:var(--red2); font-weight:1000; letter-spacing:.12em; font-size:13px; text-transform:uppercase;}
+    h2{font-size:clamp(30px, 4vw, 48px); line-height:1.15; letter-spacing:-.045em; margin:6px 0 0;}
+    .lead{max-width:820px; color:#49423d; font-size:18px; margin:0;}
+    .grid-5{display:grid; grid-template-columns:repeat(5, 1fr); gap:14px;}
+    .impact-card{
+      min-height:180px; background:rgba(255,255,255,.82); border:1px solid var(--line); border-radius:22px; padding:18px; cursor:pointer; position:relative; overflow:hidden;
+      transition:.22s ease; box-shadow:0 8px 22px rgba(25,20,15,.06)
+    }
+    .impact-card:hover,.impact-card.active{transform:translateY(-4px); box-shadow:0 16px 36px rgba(25,20,15,.13); border-color:rgba(228,61,48,.45)}
+    .impact-card.active::before{content:""; position:absolute; inset:0 0 auto 0; height:5px; background:var(--red)}
+    .icon{font-size:30px; margin-bottom:10px;}
+    .impact-card h3{margin:0 0 8px; line-height:1.25; font-size:19px;}
+    .impact-card p{margin:0; color:var(--muted); font-size:14px;}
+    .detail-panel{margin-top:18px; background:#111; color:#fff; border-radius:26px; padding:26px; display:grid; grid-template-columns:.8fr 1.2fr; gap:24px; align-items:start; box-shadow:var(--shadow);}
+    .detail-panel h3{margin:0 0 8px; font-size:28px; letter-spacing:-.03em;}
+    .detail-panel p{color:#e6dfd7; margin:0 0 12px;}
+    .mini-list{display:grid; gap:10px; margin-top:12px;}
+    .mini-item{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:12px 14px;}
+    .tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
+    .tab{border:1px solid var(--line); background:#fff; color:var(--text); border-radius:999px; padding:11px 16px; font-weight:1000; cursor:pointer;}
+    .tab.active{background:var(--red); color:white; border-color:var(--red);}
+    .strategy-box{background:rgba(255,255,255,.86); border:1px solid var(--line); border-radius:28px; padding:26px; box-shadow:var(--shadow);}
+    .strategy-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:18px;}
+    .strategy-card{border-radius:20px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#fff9f3); padding:18px;}
+    .strategy-card h4{margin:0 0 8px; font-size:18px;}
+    .strategy-card ul{margin:0; padding-left:20px; color:#4d4640;}
+    .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+    .pill{font-family:var(--mono); font-size:12px; background:#f0e6da; border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:#4a3f37;}
+    .matrix{overflow:auto; background:#fff; border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow);}
+    table{width:100%; border-collapse:collapse; min-width:820px;}
+    th,td{padding:16px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top;}
+    th{background:#191715; color:#fff; font-size:14px; letter-spacing:.04em;}
+    tr:last-child td{border-bottom:0}
+    .risk{display:inline-flex; align-items:center; justify-content:center; min-width:74px; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:1000; color:#fff;}
+    .risk.high{background:var(--red)} .risk.mid{background:var(--orange)} .risk.low{background:var(--green)}
+    .filter-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px;}
+    .filter{border:1px solid var(--line); border-radius:999px; background:#fff; padding:9px 13px; cursor:pointer; font-weight:900;}
+    .filter.active{background:#111; color:#fff;}
+    .foundation-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+    .foundation-card{background:rgba(255,255,255,.86); border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:0 10px 24px rgba(25,20,15,.06);}
+    .foundation-card h3{margin:8px 0; font-size:22px; letter-spacing:-.02em;}
+    .foundation-card p{color:#514943; margin:0;}
+    .timeline{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+    .time-card{position:relative; background:#fff; border:1px solid var(--line); border-radius:26px; padding:22px; box-shadow:var(--shadow);}
+    .time-card::before{content:""; position:absolute; left:22px; top:0; width:5px; height:48px; background:var(--red); border-radius:0 0 999px 999px;}
+    .time-card h3{margin:26px 0 8px; font-size:24px;}
+    .time-card li{margin:8px 0; color:#4f4740;}
+    .checklist{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+    .check-item{display:flex; gap:12px; align-items:flex-start; background:#fff; border:1px solid var(--line); padding:14px; border-radius:18px; box-shadow:0 8px 18px rgba(25,20,15,.05);}
+    .check-item input{width:20px;height:20px; margin-top:3px; accent-color:var(--red);}
+    .check-item span{font-weight:800;}
+    .check-item small{display:block; color:var(--muted); margin-top:3px;}
+    .progress-wrap{margin:18px 0 0; background:#fff; border:1px solid var(--line); border-radius:999px; overflow:hidden; height:18px;}
+    .progress{height:100%; width:0%; background:linear-gradient(90deg,var(--red),var(--gold)); transition:.25s ease;}
+    .article-panel{background:#fff; border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); overflow:hidden;}
+    .article-toolbar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px; background:#171514; color:#fff;}
+    .article-toolbar p{margin:0; font-weight:900;}
+    textarea.article-text{width:100%; min-height:520px; border:0; padding:24px; resize:vertical; font-size:16px; line-height:1.8; font-family:var(--sans); color:#1d1a17; background:#fffdf9; outline:none;}
+    .toast{position:fixed; right:20px; bottom:20px; background:#111; color:#fff; padding:12px 16px; border-radius:999px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transform:translateY(8px); transition:.2s ease; z-index:50;}
+    .toast.show{opacity:1; transform:translateY(0)}
+    .references{background:#151311; color:#f5eee7; border-radius:28px; padding:28px;}
+    .references h3{margin-top:0; font-size:26px;}
+    .references li{margin:12px 0; color:#e4ddd5;}
+    .references a{color:#fff; border-bottom-color:rgba(255,255,255,.35)}
+    footer{padding:36px 0 56px; color:#6b635d; text-align:center;}
+    @media (max-width:980px){
+      .hero-grid,.detail-panel{grid-template-columns:1fr;}
+      .grid-5{grid-template-columns:repeat(2,1fr)}
+      .strategy-grid,.foundation-grid,.timeline{grid-template-columns:1fr;}
+      .checklist{grid-template-columns:1fr;}
+      section{padding:56px 0;}
+    }
+    @media (max-width:560px){
+      .wrap{width:min(100% - 24px, 1180px)}
+      .grid-5{grid-template-columns:1fr}
+      .hero{min-height:auto; padding-top:36px;}
+      .article-toolbar{align-items:flex-start; flex-direction:column;}
+      .btn{width:100%; justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="spark"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="tag">TCI 大江生醫</span>
+          <span class="tag">採購主管視角</span>
+          <span class="tag">供應鏈韌性分析</span>
+        </div>
+        <h1>TCI 採購主管 <span class="accent">對荷姆茲海峽封鎖一事之分析與因應</span></h1>
+        <p class="subtitle">從能源、航運、原料、包材與農業投入成本，重新思考大江生醫 CDMO+ 的全球採購與區域短鏈交付策略。</p>
+        <div class="prompt-box">
+          <b>核心題目：</b>2026 年中東戰爭造成荷姆茲海峽封鎖，如果您是 TCI 的採購主管，您認為這波事件會對 TCI 造成什麼影響？TCI 集團應該採取什麼措施？
+        </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#impact">看五大衝擊</a>
+          <a class="btn secondary" href="#strategy">看採購措施</a>
+          <button class="btn red" id="copyArticleTop">複製完整文章</button>
+        </div>
+      </div>
+      <aside class="kpi-panel">
+        <p class="kpi-title">外部情境關鍵數字</p>
+        <div class="kpi"><div class="num">25%</div><div class="label">IEA：2025 年全球海運石油貿易約四分之一經由荷姆茲海峽</div></div>
+        <div class="kpi"><div class="num">110+ bcm</div><div class="label">IEA：2025 年超過 110 bcm LNG 經由荷姆茲海峽</div></div>
+        <div class="kpi"><div class="num">20%+</div><div class="label">EIA：2025 年上半年超過 20% 全球 LNG 貿易經由荷姆茲海峽</div></div>
+        <p class="source-note">資料基礎：EIA、IEA、TCI 2025 年報、TCI 2024 永續報告書與本次供應鏈危機附件。</p>
+      </aside>
+    </div>
+  </div>
+
+  <nav class="sticky">
+    <div class="wrap nav-inner">
+      <a href="#answer">總答案</a>
+      <a href="#impact">五大衝擊</a>
+      <a href="#strategy">三階段措施</a>
+      <a href="#risk">風險矩陣</a>
+      <a href="#foundation">TCI 既有基礎</a>
+      <a href="#checklist">採購主管清單</a>
+      <a href="#article">完整文章</a>
+      <a href="#refs">參考資料</a>
+    </div>
+  </nav>
+
+  <section id="answer">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Executive Answer</div>
+          <h2>一句話回答題目</h2>
+        </div>
+      </div>
+      <div class="strategy-box">
+        <p class="lead"><b>如果我是 TCI 的採購主管，我會把 2026 年荷姆茲海峽封鎖視為全球供應鏈壓力測試，而不是單純的運費上漲事件。</b>短期要守住不停線、不缺料、不違規；中期要降低對高能源、高重量、長途運輸包材的依賴；長期則要以 AI、City Factory、Local-for-Local、ISO 28000、永續包裝與自主 IBD 原料，建立可量化、可稽核、可對客戶銷售的全球供應鏈韌性方案。</p>
+        <div class="pill-row">
+          <span class="pill">短期：供應不中斷</span>
+          <span class="pill">中期：產品去物質化</span>
+          <span class="pill">長期：區域短鏈交付</span>
+          <span class="pill">AI：供應鏈控制塔</span>
+          <span class="pill">ESG：成本與客戶價值</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Impact Map</div>
+          <h2>事件對 TCI 的五大衝擊</h2>
+        </div>
+        <p class="lead">點擊卡片查看採購主管應注意的風險細節。</p>
+      </div>
+      <div class="grid-5" id="impactCards"></div>
+      <div class="detail-panel" id="impactDetail">
+        <div>
+          <div class="tag red">目前選取</div>
+          <h3 id="detailTitle">能源成本與製造穩定性</h3>
+          <p id="detailText">荷姆茲海峽封鎖推升原油與 LNG 價格，將影響電力、天然氣、蒸汽、空壓、冷鏈與高溫製程成本。</p>
+        </div>
+        <div class="mini-list" id="detailList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="strategy">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Procurement Playbook</div>
+          <h2>TCI 應採取的三階段措施</h2>
+        </div>
+        <p class="lead">從採購救火，升級為跨採購、品保、法規、研發、廠務、ESG 與業務的韌性作戰系統。</p>
+      </div>
+      <div class="tabs" id="strategyTabs"></div>
+      <div class="strategy-box" id="strategyContent"></div>
+      <div class="timeline" style="margin-top:22px;">
+        <div class="time-card"><h3>短期：1–3 個月</h3><ul><li>建立四張風險熱圖。</li><li>提高關鍵原料與包材安全庫存。</li><li>替代供應商先完成 COA、規格與法規預審。</li><li>屏東廠區錯峰生產與能源應變。</li></ul></div>
+        <div class="time-card"><h3>中期：3–12 個月</h3><ul><li>玻璃瓶輕量化與替代包材。</li><li>推動液態包、粉包、錠劑、膠囊、果凍等輕量劑型。</li><li>把地緣政治風險納入供應商評鑑。</li><li>將永續包裝變成客戶提案。</li></ul></div>
+        <div class="time-card"><h3>長期：12 個月以上</h3><ul><li>推動 Local-for-Local 區域短鏈。</li><li>以猶他、上海、屏東與 City Factory 分散交付。</li><li>擴大自主 IBD (生物整合設計) 原料與生物挖礦。</li><li>建立 AI 供應鏈控制塔。</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risk">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Risk Matrix</div>
+          <h2>採購風險矩陣</h2>
+        </div>
+        <p class="lead">切換風險等級，快速聚焦優先處理項目。</p>
+      </div>
+      <div class="filter-row" id="filters">
+        <button class="filter active" data-risk="all">全部</button>
+        <button class="filter" data-risk="high">高風險</button>
+        <button class="filter" data-risk="mid">中風險</button>
+        <button class="filter" data-risk="low">低風險</button>
+      </div>
+      <div class="matrix">
+        <table>
+          <thead><tr><th>風險領域</th><th>風險等級</th><th>對 TCI 的影響</th><th>採購主管行動</th><th>關鍵指標</th></tr></thead>
+          <tbody id="riskRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="foundation">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">TCI Existing Capabilities</div>
+          <h2>TCI 已有的防禦基礎</h2>
+        </div>
+        <p class="lead">這不是從零開始，而是把既有能力整合成「供應鏈韌性方案」。</p>
+      </div>
+      <div class="foundation-grid">
+        <div class="foundation-card"><div class="icon">🌐</div><h3>全球均衡成長</h3><p>台灣屏東、上海金山、美國猶他與未來 City Factory，可支撐區域短鏈交付。</p></div>
+        <div class="foundation-card"><div class="icon">🤖</div><h3>AI 賦能</h3><p>可應用於銷售預測、供應鏈優化、研發設計與數據中台，形成控制塔。</p></div>
+        <div class="foundation-card"><div class="icon">⚡</div><h3>能源與減碳承諾</h3><p>RE100、EP100、SBTi 與能源管理，讓能源韌性成為製造成本與客戶價值。</p></div>
+        <div class="foundation-card"><div class="icon">🛡️</div><h3>ISO 28000</h3><p>供應鏈安全管理可進一步納入地緣政治、航線、能源與法規曝險。</p></div>
+        <div class="foundation-card"><div class="icon">📦</div><h3>SR5C 永續包裝</h3><p>從換材料升級為產品去物質化，降低包材重量與跨境運輸曝險。</p></div>
+        <div class="foundation-card"><div class="icon">🌱</div><h3>IBD 與生物挖礦</h3><p>香蕉皮、紅藜、青棗、柑橘幼果、花生膜等自主原料，是供應鏈主權資產。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Action Checklist</div>
+          <h2>採購主管行動清單</h2>
+        </div>
+        <p class="lead">勾選後會暫存在本機瀏覽器，方便簡報前檢查論點是否完整。</p>
+      </div>
+      <div class="checklist" id="checklistBox"></div>
+      <div class="progress-wrap"><div class="progress" id="progressBar"></div></div>
+    </div>
+  </section>
+
+  <section id="article">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Copy-ready Article</div>
+          <h2>完整文章，可直接複製</h2>
+        </div>
+        <p class="lead">下方文字可直接全選複製，或按右上角按鈕複製全文。</p>
+      </div>
+      <div class="article-panel">
+        <div class="article-toolbar">
+          <p>2026 年荷姆茲海峽封鎖對 TCI 大江生醫之供應鏈衝擊與採購因應策略</p>
+          <button class="btn red" id="copyArticleBtn">複製完整文章</button>
+        </div>
+        <textarea class="article-text" id="articleText" spellcheck="false"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section id="refs">
+    <div class="wrap references">
+      <h3>參考資料</h3>
+      <ol>
+        <li>U.S. Energy Information Administration, <a href="https://www.eia.gov/international/analysis/special-topics/world_oil_transit_Chokepoints" target="_blank" rel="noreferrer">World Oil Transit Chokepoints</a>。</li>
+        <li>International Energy Agency, <a href="https://www.iea.org/topics/the-middle-east-and-global-energy-markets" target="_blank" rel="noreferrer">The Middle East and Global Energy Markets</a>。</li>
+        <li>大江生醫 2025 年報：營收、獲利、AI 賦能、全球均衡成長、猶他州廠房與 City Factory 方向。</li>
+        <li>大江生醫 2024 永續報告書：RE100、EP100、SBTi、能源管理、供應商永續管理、ISO 28000、SR5C 永續包裝與農業副產物循環經濟。</li>
+        <li>en.wikipedia.org 2026 Strait of Hormuz crisis - Wikipedia</li>
+        <li>udn.com 整理包／命脈級荷莫茲海峽為何重要？伊朗掐住全球能源咽喉衝擊台灣國安 - 聯合新聞網</li>
+        <li>brookings.edu From chokepoint to crisis: The Strait of Hormuz and global oil markets - Brookings Institution</li>
+        <li>shippingdigest.tw 雙重封鎖壓制航運荷姆茲海峽通行量驟減 - 航貿週刊</li>
+        <li>table.media Strait of Hormuz: Economic impact of the blockade - Table.Briefings</li>
+        <li>globaltrademag.com Hormuz Reopening May Take Months to Restore Global Shipping Confidence</li>
+        <li>ft.com Oil sinks below $80 as traders bet Strait of Hormuz flows will return</li>
+        <li>taisounds.com 卡達將在海峽重開後急速恢復天然氣出口 一個月後恢復50%</li>
+        <li>arabianorganics.com TCI co. Ltd - Arabian Organics</li>
+        <li>finance.biggo.com.tw 大江生醫財報| 8436.TW 財務報表與營收數據 - BigGo 財經</li>
+        <li>oberk.com Wellness and Vitality: Sustainable Packaging in Nutraceuticals - O.Berk</li>
+        <li>reliefweb.int Strait of Hormuz disruptions: Implications for global trade and development - ReliefWeb</li>
+        <li>tgl-group.net 荷姆茲海峽如果被癱瘓,對全球航運出現的影響</li>
+        <li>economymiddleeast.com Hormuz crisis reshapes Gulf energy investment priorities</li>
+        <li>ctee.com.tw 中東LNG船來不了台灣有斷「氣」危機？備援方案是什麼？跟電價調漲有沒有關係？台電董座說分明 - 工商時報</li>
+        <li>finance.ettoday.net 荷姆茲海峽卡關掐命脈台灣3成天然氣、8%原油受衝擊 - ETtoday財經雲</li>
+        <li>talk.ltn.com.tw 自由廣場》封鎖荷姆茲海峽？ 台灣的能源與航運戰略 - 自由評論網</li>
+        <li>tci-bio.com Environment | TCI-Private Label Supplement/Skincare Manufacturer</li>
+        <li>fusonenergy.com RE100是什麼？採用100%再生能源，達到永續節能的目標！</li>
+        <li>mdpi.com Life Cycle Assessment of Functional Food: Improving Sustainability in the Biotechnology Industry through Transparency - MDPI</li>
+        <li>upmedia.mg 荷莫茲危機引爆LNG爭奪戰台灣天然氣逾30%依賴卡達恐受衝擊 - 上報</li>
+        <li>ec.ltn.com.tw 大江接獲雲南白藥訂單下半年開始出貨 - 自由財經</li>
+        <li>managertoday.com.tw AQUAGEN用一瓶台灣玻璃瓶氣泡水征服全世界 - 經理人</li>
+        <li>youtube.com Flexible packaging machine for functional drinks - Schubert - YouTube</li>
+        <li>miron.com Natural Glass Packaging for Sustainable & Safe Products - MIRON Violetglass</li>
+        <li>m.tech.china.com 大江生医丨上海百岳特SR5C方案：构建永续包装体系迈向绿色未来 - 中华网</li>
+        <li>tetrapak.com Business opportunities with Tetra Top® and water</li>
+        <li>health.tvbs.com.tw 大江生醫進口原料驗出禁用防腐劑！德國膠原蛋白飲又見不合格 - 健康2.0</li>
+        <li>makssin.blogspot.com 機能性飲品、保健食品及美容保養品CDMO服務公司，大江(8436.TW)</li>
+        <li>tci-bio.com What Supplement Manufacturers Suit You Better? - TCI Bio</li>
+        <li>circular-taiwan.org 農業副產物的生物挖礦模式・循環台灣基金會</li>
+        <li>smeclimatehub.org SME Climate Hub and Walmart launch new resources for food & beverage manufacturing sector</li>
+        <li>tci-bio.com 機能性飲品| TCI大江生醫保健食品及保養品代工廠</li>
+        <li>discoveryalert.com.au U.S.-Iran Peace Deal and the Strait of Hormuz Reopening Explained</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="wrap">© TCI Supply Chain Resilience Interactive Brief｜供內部策略討論與面試答題使用</footer>
+  <div class="toast" id="toast">已複製完整文章</div>
+
+  <script>
+    const impacts = [
+      {icon:'⚡', title:'能源成本與製造穩定性', short:'原油與 LNG 波動推高電力、天然氣與製程成本。', text:'荷姆茲海峽封鎖推升原油與 LNG 價格，將影響電力、天然氣、蒸汽、空壓、冷鏈與高溫製程成本。', points:['屏東 S5、S9、S11、S12 需特別管理能源穩定性。','高溫殺菌、萃取、液態製程與自動倉儲將承受 Overhead 壓力。','採購不只看原物料，也要與廠務共同管理能源採購與節能。']},
+      {icon:'🚢', title:'航運延誤與交付風險', short:'航線改道、保險費與燃油附加費上升，壓縮交期。', text:'跨國 CDMO 的交付承諾高度依賴船期、港口、報關與國際物流。封鎖會造成原料與成品雙向壓力。', points:['交期延誤將影響客戶上市排程。','高活性成分可能面臨保存與效期壓力。','需建立關鍵航線與替代物流決策機制。']},
+      {icon:'🧪', title:'原料品質與邊境合規', short:'替代供應商若未預審，可能引發品質與法規風險。', text:'保健食品與高活性成分不能只追求買得到；必須通過品質、規格、法規、批號追溯與邊境查驗。', points:['膠原蛋白、益生菌、植物萃取物與特殊活性原料要優先盤點。','替代供應商須完成 COA、禁用成分、規格書與法規預審。','採購、QA、法規、研發需建立快速審查小組。']},
+      {icon:'📦', title:'包材成本與產品結構', short:'玻璃瓶受能源與物流雙重衝擊，需從劑型設計端降風險。', text:'玻璃瓶能源密集且重量高，航運費上升時會放大單位產品成本。包材策略應前移到產品設計。', points:['推動玻璃瓶輕量化與低碳替代包材。','引導客戶採液態包、粉包、錠劑、膠囊、果凍或無水配方。','將低包材、低物流曝險變成 CDMO+ 提案價值。']},
+      {icon:'🌱', title:'農業投入成本與本土原料', short:'本土化原料可降海運依賴，但仍受化肥與能源成本牽動。', text:'生物挖礦與農業副產物是供應鏈主權資產，但化肥、能源與農業投入成本仍可能間接傳導。', points:['香蕉皮、紅藜、青棗、柑橘幼果與花生膜等原料應納入長期戰略。','強化契作、區域採購與農業韌性。','把循環經濟從 ESG 故事升級為供應鏈防禦。']}
+    ];
+
+    const strategies = {
+      short: {name:'短期：守住供應不中斷', desc:'目標是不停線、不缺料、不違規。採購主管要把混亂中的資訊變成可排序、可追蹤、可決策的風險清單。', cards:[['四張風險熱圖',['關鍵原料熱圖','關鍵包材熱圖','關鍵供應商熱圖','關鍵航線熱圖']],['動態安全庫存',['高風險原料提高至 120–180 天安全庫存','依客戶重要性與替代難度分級','避免低庫存效率邏輯造成斷料']],['快速合規審查',['COA、規格書與禁用成分檢核','法規與邊境文件預審','採購、QA、法規、研發共同決策']]]},
+      mid: {name:'中期：包材與劑型重構', desc:'目標是降低對高能源、高重量、長途運輸包材的依賴，將危機轉化為產品升級機會。', cards:[['產品去物質化',['減少水、瓶、重量與體積','降低跨境運輸曝險','把包材議題前移到產品設計']],['替代包材',['玻璃瓶輕量化','rPET、FSC 紙材、鋁箔液態包','環保紙盒與無水配方']],['客戶提案升級',['液態包、粉包、錠劑、膠囊、果凍','Double Nutri / Double Nutri Zero 技術敘事','低碳、低物流曝險的新產品方案']]]},
+      long: {name:'長期：建立區域短鏈與 AI 控制塔', desc:'目標是從全球長鏈出口模式，升級為 Local-for-Local 的區域短鏈交付網絡。', cards:[['City Factory 網絡',['美洲由猶他廠與城市型產線供應','中國與亞洲由上海、屏東協同','歐洲透過在地合作夥伴與區域配送']],['自主原料與生物挖礦',['擴大 IBD 原料與本土農業副產物','降低進口依賴與碳足跡','建立競爭者難以複製的功效資料庫']],['AI 供應鏈控制塔',['需求預測與庫存模擬','航線延誤與供應商異常預警','匯率、能源與物流成本推估']]]}
+    };
+
+    const risks = [
+      ['能源成本','high','電力、天然氣、蒸汽與公用工程成本上升，壓縮製造毛利。','錯峰生產、能源採購、節能改善、綠電與能源管理系統。','單位能源成本、尖峰用電、製造 Overhead'],
+      ['進口原料','high','高活性成分到貨延遲、保存條件惡化或替代供應商未合規。','提高安全庫存、替代供應商預審、COA (規格分析證明書) 與法規文件檢核。','DOH (庫存週轉天數)、缺料率、通關合格率'],
+      ['玻璃與重包材','high','玻璃熔爐能源成本與跨境運費同時上升。','玻璃輕量化、替代材料、劑型轉換、產品去物質化。','單位包材重量、包材成本、Scope 3'],
+      ['航線與物流','mid','船期不穩、保費與燃油附加費增加，交期承諾受壓。','替代航線、區域倉儲、客戶交期分級、物流商 SLA (服務水準協議)。','OTD (準時交貨率)、平均延誤天數、運費率'],
+      ['農業副產物','mid','化肥與能源成本推升在地原料收購成本。','長期契作、區域採購、農業韌性與生物挖礦資料庫。','收購單價、供應穩定度、本土原料占比'],
+      ['供應商治理','mid','傳統評鑑未必能反映地緣政治與航線曝險。','新增  航線(運輸路線是否高風險)、能源(能源成本是否敏感)、單一來源(是否只有一家可供貨)、法規(是否容易卡關)、切換時間(斷供後多久能換供應商) 五大欄位。','高風險供應商占比、替代供應商覆蓋率'],
+      ['品牌客戶信任','low','若危機中仍能穩定交付，反而強化 CDMO+ 價值。','將韌性、低碳與區域交付包裝成客戶方案。','續約率、客戶滿意、策略客戶營收']
+    ];
+
+    const checklist = [
+      ['盤點關鍵原料','列出膠原蛋白、益生菌、玻尿酸、特殊植物萃取物與高活性成分。'],
+      ['建立四張風險熱圖','原料、包材、供應商、航線。'],
+      ['設定安全庫存級距','依替代難度與客戶重要性調整至 120–180 天。'],
+      ['成立快速審查小組','採購、QA、法規、研發共同審查替代供應商。'],
+      ['導入能源應變排程','高耗能製程錯峰生產，降低尖峰電價與限電風險。'],
+      ['啟動包材輕量化','玻璃瓶、紙材、rPET、鋁箔液態包與無水配方。'],
+      ['重構產品劑型提案','液態包、粉包、錠劑、膠囊、果凍等低物流曝險產品。'],
+      ['更新供應商評鑑','納入航線、能源、單一來源、法規邊境與切換時間。'],
+      ['推動 Local-for-Local','猶他、上海、屏東與 City Factory 形成區域短鏈。'],
+      ['建立 AI 控制塔','需求預測、庫存模擬、航線預警、供應商異常與成本推估。']
+    ];
+
+    const fullArticle = `2026 年荷姆茲海峽封鎖對 TCI 大江生醫之供應鏈衝擊與採購因應策略
+
+如果我是 TCI 大江生醫的採購主管，我不會把 2026 年中東戰爭造成荷姆茲海峽封鎖，只視為短期運費上漲或原料延遲的單一事件，而會將其定位為一次全球供應鏈壓力測試。荷姆茲海峽是全球能源與航運的重要咽喉。根據美國能源資訊署 EIA 資料，2025 年上半年超過 20% 的全球 LNG (液化天然氣) 貿易經由荷姆茲海峽通行；國際能源署 IEA 亦指出，2025 年約四分之一的全球海運石油貿易、超過 110 bcm (十億立方公尺) 的 LNG 經由該海峽，約占全球 LNG 貿易近五分之一。換言之，荷姆茲海峽封鎖不只是中東區域事件，而是會牽動能源、航運、化工、農業、包材與全球製造成本的系統性風險。
+
+對 TCI 而言，這波事件的影響可分為五個層面。
+
+第一，是能源成本與製造穩定性的衝擊。TCI 的主要生產基地包含台灣屏東磐石廠區、中國上海金山廠區與美國猶他廠區，其中屏東廠區涵蓋 S5 機能性飲品廠、S9 機能性食品廠、S11 綠色環保面膜廠與 S12 自動倉儲廠。機能性飲品、保健食品、面膜與萃取製程都高度依賴穩定電力、蒸汽、空調、空壓、冷鏈與水資源。一旦荷姆茲海峽封鎖推升原油與 LNG 價格，將直接造成台灣電力與天然氣成本上升，進而推高 TCI 的製造費用與工廠 Overhead (間接成本)。對高溫殺菌、萃取、液態製程與自動化倉儲而言，能源價格與供電穩定性都會成為採購與製造部門必須共同管理的營運風險。
+
+第二，是航運延誤與交付風險。TCI 是全球化 CDMO 業者，產品銷售至多國市場，客戶也包含大型國際品牌。當荷姆茲海峽封鎖導致航線改道、保險費上升、燃油附加費增加與船期不穩，進口原料、包材與出口成品都會受到影響。對一般商品而言，交期延誤可能只是庫存問題；但對保健食品與高活性成分而言，延誤還會衍生保存條件、溫控、效期、批號、品質穩定性與法規文件一致性的問題。因此，TCI 採購部門不能只問「貨什麼時候到」，而要進一步掌握「貨在延誤期間是否仍符合品質、法規與客戶交付承諾」。
+
+第三，是進口原料的品質與邊境合規風險。TCI 的產品涉及膠原蛋白、植物萃取物、機能性成分、玻尿酸、益生菌與各種高效能配方。若中東封鎖造成歐洲、亞洲與美洲之間的航運時間拉長，部分高活性原料可能因港口壅塞、溫控失效或保存條件惡化而產生活性衰退。更大的風險是，當企業為了補足缺料而急於尋找替代供應商時，可能因供應商資格、成分規格、防腐劑、添加物或進口文件不完整而產生邊境查驗問題。對 TCI 這類 CDMO 企業而言，採購風險不只是買不到料，而是買到的料必須通得過法規、驗得過品質、進得了市場，並且不損害客戶品牌信任。
+
+第四，是包材成本與產品結構的衝擊。TCI 的產品包含機能性飲品、液態包、粉包、錠劑、膠囊、面膜與護膚產品。若機能性飲品大量使用玻璃瓶，將面臨雙重成本壓力：一方面，玻璃製造高度依賴高溫熔爐與能源，能源價格上升會推高玻璃瓶成本；另一方面，玻璃瓶重量高、體積大，在航運費與燃油附加費上升時，單位產品的物流成本會被放大。因此，荷姆茲海峽封鎖不只影響原料採購，也會迫使 TCI 重新思考包材策略與產品劑型設計。
+
+第五，是本土農業原料與循環經濟供應鏈的間接通膨。TCI 近年重視生物挖礦與農業副產物再利用，將香蕉皮、紅藜、青棗幼果、柑橘幼果、花生膜等轉化為高附加價值的保健食品、保養品或包材原料。這類本土化原料雖然可降低對長途海運與進口原料的依賴，但並不代表完全不受國際局勢影響。若中東戰爭推升化肥、能源與農業投入成本，台灣在地契作農民與農業副產物收購成本也會上升。因此，TCI 必須把本土原料視為長期供應鏈主權資產，而不是單純的 ESG 形象工程。
+
+面對上述衝擊，TCI 集團應採取短、中、長期三層次措施。
+
+短期而言，採購主管的第一要務是確保不停線、不缺料、不違規。TCI 應立即建立「關鍵原料、關鍵包材、關鍵供應商、關鍵航線」四張風險熱圖，將所有高風險項目依照來源國、航線、前置時間、替代供應商、庫存天數、溫控需求、效期、法規限制與客戶重要性分級管理。對於高活性成分、膠原蛋白、玻尿酸、益生菌、特殊植物萃取物與關鍵包材，應將安全庫存從傳統效率導向的低庫存模式，調整為韌性導向的動態庫存模式。部分關鍵進口原料可視風險提高至 120 至 180 天安全庫存，以確保航線恢復前產線不因缺料停擺。
+
+同時，TCI 不應因缺料而降低供應商審查標準。所有替代供應商必須先完成 COA、規格書、禁用成分、添加物、防腐劑、產地證明、批號追溯與進口法規預審。尤其對於食品、保健品與高活性成分，採購部門應與品保、法規、研發共同設立「替代原料快速審查小組」，在速度與合規之間取得平衡。這樣才能避免短期缺料問題演變成邊境查驗、產品下架、客訴或客戶信任受損。
+
+在能源方面，TCI 應與廠務、生產排程與財務單位共同建立能源應變機制。屏東廠區可針對高耗能製程進行錯峰生產，降低尖峰電價與限電風險；同時加速蒸汽冷凝水回收、空壓系統效率提升、冷卻水與空調系統節能改善。由於 TCI 已承諾 2030 年百分之百使用再生能源，並規劃導入能源管理系統，採購部門也應把綠電、能源效率與供電穩定性納入供應鏈韌性管理，而不是只把能源視為廠務議題。
+
+中期而言，TCI 應從包材與產品設計端降低對高能源、高重量與長途運輸的依賴。對玻璃瓶裝機能性飲品，應推動玻璃瓶輕量化，與供應商共同開發低重量、高強度、可回收的瓶器設計；同時依產品特性評估 rPET、FSC 紙材、鋁箔液態包、環保紙盒或其他低碳包材。TCI 的永續包裝策略不應只是換材料，而應走向「產品去物質化」，也就是減少水、減少瓶、減少重量、減少跨境運輸體積。
+
+具體而言，TCI 可引導品牌客戶將部分玻璃瓶裝飲品，轉為液態包、粉包、錠劑、膠囊、果凍或其他較輕量化劑型。尤其 TCI 已具備 Double Nutri、Double Nutri Zero 等液態製程技術，若能將高活性成分穩定性、吸收率、便利性與低物流風險整合成客戶提案，就能把危機轉化為產品升級機會。換句話說，採購部門不應只是被動議價，而應與研發、業務、行銷共同設計「低包材、低碳、低物流曝險」的新產品解決方案。
+
+此外，TCI 已導入供應商永續管理與 ISO 28000 供應鏈安全管理系統，未來應把地緣政治風險正式納入供應商評鑑。傳統供應商評鑑通常重視品質、價格、交期與服務，但在中東戰爭與荷姆茲海峽封鎖後，評鑑項目應增加五項指標：航線曝險、能源曝險、單一來源曝險、法規邊境曝險與替代供應商切換時間。供應商不只是便宜或品質好就足夠，還必須具備在危機時期維持交付的能力。
+
+長期而言，TCI 應加速推動 Local-for-Local 的區域短鏈供應模式。2025 年報已指出，TCI 未來將推動 City Factory 模式，在核心市場城市周邊設立中小型高自動化產線，並已於 2025 年第四季購買美國猶他州廠房，以提升全球交付彈性。這個方向應成為 TCI 因應地緣政治風險的核心戰略。未來美洲市場應由美國猶他廠與後續 City Factory 就地供應；中國與亞洲市場由上海金山廠與屏東廠區協同；歐洲市場則可透過歐洲據點或在地合作夥伴建立區域製造與區域配送能力。如此一來，TCI 才能從「全球長鏈出口模式」升級為「區域短鏈交付網絡」。
+
+同時，TCI 應擴大自主 IBD 原料與本土農業副產物的研發及採購比例。香蕉皮、紅藜、青棗幼果、柑橘幼果、花生膜等原料，不只是循環經濟故事，更是降低進口依賴與建立產品差異化的重要戰略資產。當全球進口原料受制於航運、關稅、匯率與地緣政治風險時，能否掌握自主原料、專利配方與功效資料庫，將成為 TCI 與一般代工廠的關鍵差異。TCI 應將生物挖礦能力與供應鏈韌性結合，建立「自主原料、低碳包材、區域製造、快速交付」的一體化 CDMO+ 方案。
+
+最後，TCI 應善用 AI 建立供應鏈控制塔。2025 年報已指出，公司將擴大 AI 於銷售預測、供應鏈優化、研發設計與數據中台的應用。採購主管應將 AI 應用於需求預測、原料風險預警、航線延誤監控、供應商交付異常、庫存水位模擬、替代供應商比對與匯率能源成本推估。如此採購部門才能從事後救火，轉為事前預警與動態決策。
+
+總結而言，2026 年中東戰爭造成荷姆茲海峽封鎖，對 TCI 的影響不只是運費上漲，而是能源成本、航運交期、原料品質、法規合規、包材成本、農業投入成本與全球交付承諾的全面壓力測試。如果我是 TCI 的採購主管，我會把這次事件視為推動供應鏈升級的契機：短期守住庫存、交期與合規；中期推動包材輕量化與產品去物質化；長期建構 Local-for-Local 區域短鏈供應網絡，並結合 AI、永續包裝、能源管理、ISO 28000 供應鏈安全管理與自主 IBD 原料，形成一套可量化、可稽核、可對客戶銷售的全球供應鏈韌性方案。
+
+對 TCI 而言，真正的採購能力不只是把原料買回來，而是在全球不確定環境下，仍能確保產品做得出來、品質守得住、法規過得了、客戶交得出、成本控得住。這才是 CDMO+ 時代採購主管應具備的戰略價值。`;
+
+    function renderImpacts(){
+      const box = document.getElementById('impactCards');
+      box.innerHTML = impacts.map((x,i)=>`<div class="impact-card ${i===0?'active':''}" data-i="${i}"><div class="icon">${x.icon}</div><h3>${x.title}</h3><p>${x.short}</p></div>`).join('');
+      box.querySelectorAll('.impact-card').forEach(card=>card.addEventListener('click',()=>setImpact(+card.dataset.i)));
+      setImpact(0);
+    }
+    function setImpact(i){
+      document.querySelectorAll('.impact-card').forEach((c,idx)=>c.classList.toggle('active',idx===i));
+      const x = impacts[i];
+      document.getElementById('detailTitle').textContent=x.title;
+      document.getElementById('detailText').textContent=x.text;
+      document.getElementById('detailList').innerHTML=x.points.map(p=>`<div class="mini-item">${p}</div>`).join('');
+    }
+
+    function renderStrategies(){
+      const tabs = document.getElementById('strategyTabs');
+      tabs.innerHTML = Object.entries(strategies).map(([k,v],i)=>`<button class="tab ${i===0?'active':''}" data-key="${k}">${v.name}</button>`).join('');
+      tabs.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>setStrategy(t.dataset.key)));
+      setStrategy('short');
+    }
+    function setStrategy(key){
+      document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.key===key));
+      const s = strategies[key];
+      document.getElementById('strategyContent').innerHTML = `<h3 style="font-size:30px;margin:0 0 8px;letter-spacing:-.03em;">${s.name}</h3><p class="lead">${s.desc}</p><div class="strategy-grid">${s.cards.map(c=>`<div class="strategy-card"><h4>${c[0]}</h4><ul>${c[1].map(li=>`<li>${li}</li>`).join('')}</ul></div>`).join('')}</div>`;
+    }
+
+    function renderRisks(filter='all'){
+      document.getElementById('riskRows').innerHTML = risks.filter(r=>filter==='all'||r[1]===filter).map(r=>`<tr data-risk="${r[1]}"><td><b>${r[0]}</b></td><td><span class="risk ${r[1]}">${r[1]==='high'?'高':r[1]==='mid'?'中':'低'}</span></td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join('');
+    }
+    function setupFilters(){
+      document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active'); renderRisks(btn.dataset.risk);
+      }));
+    }
+
+    function renderChecklist(){
+      const box = document.getElementById('checklistBox');
+      box.innerHTML = checklist.map((c,i)=>`<label class="check-item"><input type="checkbox" data-check="${i}"><div><span>${c[0]}</span><small>${c[1]}</small></div></label>`).join('');
+      box.querySelectorAll('input').forEach(input=>{
+        input.checked = localStorage.getItem('tci-check-'+input.dataset.check)==='1';
+        input.addEventListener('change',()=>{localStorage.setItem('tci-check-'+input.dataset.check,input.checked?'1':'0'); updateProgress();});
+      });
+      updateProgress();
+    }
+    function updateProgress(){
+      const inputs=[...document.querySelectorAll('#checklistBox input')];
+      const done=inputs.filter(x=>x.checked).length;
+      document.getElementById('progressBar').style.width = (inputs.length? done/inputs.length*100:0)+'%';
+    }
+
+    async function copyArticle(){
+      const text = document.getElementById('articleText').value;
+      try{ await navigator.clipboard.writeText(text); }
+      catch(e){ const ta=document.getElementById('articleText'); ta.focus(); ta.select(); document.execCommand('copy'); }
+      const toast=document.getElementById('toast'); toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1600);
+    }
+
+    document.getElementById('articleText').value = fullArticle;
+    document.getElementById('copyArticleBtn').addEventListener('click', copyArticle);
+    document.getElementById('copyArticleTop').addEventListener('click', copyArticle);
+    renderImpacts(); renderStrategies(); renderRisks(); setupFilters(); renderChecklist();
+  </script>
+</body>
+</html>
